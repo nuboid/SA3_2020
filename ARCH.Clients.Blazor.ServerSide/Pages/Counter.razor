@@ -1,0 +1,49 @@
+﻿@page "/counter"
+
+<h1>Counter</h1>
+
+@inhoud
+<button class="btn btn-primary" @onclick="Set">Set</button>
+<button class="btn btn-primary" @onclick="Get">Get</button>
+
+@code {
+    private int currentCount = 0;
+    private string inhoud;
+    [Inject]
+    public MySingleton s { get; set; }
+
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        s.TheEvent += TheEvent;
+    }
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+    }
+
+    private void TheEvent(string data)
+    {
+        inhoud = inhoud + data;
+    }
+
+    private void Set()
+    {
+        s.SetData("XXXXXXXXXXXXXXXX");
+    }
+
+    private void Get()
+    {
+        inhoud = s.GetData();
+    }
+
+}

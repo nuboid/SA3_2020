@@ -1,0 +1,8 @@
+
+IOC Services Singleton, Transient, Scoped
+ServiceLocator
+Resiliency
+Testing
+HealthMonitoring
+BFF/API Gateway
+
